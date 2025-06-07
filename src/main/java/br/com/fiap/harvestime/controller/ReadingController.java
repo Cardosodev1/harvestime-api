@@ -39,15 +39,6 @@ public class ReadingController {
         return ResponseEntity.ok(page);
     }
 
-    @PutMapping
-    @Transactional
-    public ResponseEntity update(@RequestBody @Valid ReadingDetailsDTO readingDetailsDTO) {
-        var reading = repository.getReferenceById(readingDetailsDTO.id());
-        reading.update(readingDetailsDTO);
-
-        return ResponseEntity.ok(new ReadingDetailsDTO(reading));
-    }
-
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity delete(@PathVariable Long id) {

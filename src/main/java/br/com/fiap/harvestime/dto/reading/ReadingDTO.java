@@ -10,11 +10,11 @@ public record ReadingDTO(
     @NotNull
     LocalDateTime dateTime,
 
-    @NotNull
-    Double value,
+    Double temperature,
+    Double humidity,
 
     @NotNull
-    Long idSensor
+    Long sensorId
 
 ) {
 }

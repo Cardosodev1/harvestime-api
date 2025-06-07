@@ -6,11 +6,12 @@ import java.time.LocalDateTime;
 
 public record ReadingDetailsDTO(Long id,
                                 LocalDateTime dateTime,
-                                Double value,
-                                Long idSensor) {
+                                Double temperature,
+                                Double humidity,
+                                Long sensorId) {
 
     public ReadingDetailsDTO(Reading reading) {
-        this(reading.getId(), reading.getDateTime(), reading.getValue(), reading.getSensor().getId());
+        this(reading.getId(), reading.getDateTime(), reading.getTemperature(), reading.getHumidity(), reading.getSensor().getId());
     }
 
 }
