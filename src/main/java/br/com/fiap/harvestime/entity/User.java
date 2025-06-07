@@ -17,15 +17,19 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_user")
+    @Column(name = "user_id")
     private Long id;
 
+    @Column(name = "user_name")
     private String name;
+
+    @Column(unique = true)
     private String email;
+
     private String password;
 
-    public User(Long idUser) {
-        this.id = idUser;
+    public User(Long userId) {
+        this.id = userId;
     }
 
     public User(UserDTO userDTO) {
