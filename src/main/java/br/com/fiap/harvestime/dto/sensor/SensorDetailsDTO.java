@@ -5,11 +5,11 @@ import br.com.fiap.harvestime.entity.Sensor;
 public record SensorDetailsDTO(Long id,
                                String name,
                                String model,
-                               String unit,
-                               Long idFarm) {
+                               Boolean active,
+                               Long deviceId) {
 
     public SensorDetailsDTO(Sensor sensor) {
-        this(sensor.getId(), sensor.getName(), sensor.getModel(), sensor.getUnit(), sensor.getFarm().getId());
+        this(sensor.getId(), sensor.getName(), sensor.getModel(), sensor.getActive(), sensor.getDevice().getId());
     }
 
 }

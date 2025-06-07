@@ -14,11 +14,10 @@ public record SensorDTO(
         String model,
 
         @NotNull
-        @NotBlank
-        String unit,
+        Boolean active,
 
         @NotNull
-        Long idFarm
+        Long deviceId
 
 ) {
 }

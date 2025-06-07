@@ -2,7 +2,6 @@ package br.com.fiap.harvestime.entity;
 
 import br.com.fiap.harvestime.dto.sensor.SensorDTO;
 import br.com.fiap.harvestime.dto.sensor.SensorUpdateDTO;
-import br.com.fiap.harvestime.entity.farm.Farm;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -10,7 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "sensors")
+@Table(name = "sensor")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,39 +17,41 @@ public class Sensor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_sensor")
+    @Column(name = "sensor_id")
     private Long id;
 
+    @Column(name = "sensor_name")
     private String name;
+
+    @Column(name = "sensor_model", unique = true)
     private String model;
-    private String unit;
+
     private Boolean active;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_farm")
-    private Farm farm;
+    @JoinColumn(name = "device_id")
+    private Device device;
 
-    public Sensor(Long idSensor) {
-        this.id = idSensor;
+    public Sensor(Long sensorId) {
+        this.id = sensorId;
     }
 
     public Sensor(SensorDTO sensorDTO) {
         this.name = sensorDTO.name();
         this.model = sensorDTO.model();
-        this.unit = sensorDTO.unit();
-        this.farm = new Farm(sensorDTO.idFarm());
-        this.active = true;
+        this.active = sensorDTO.active();
+        this.device = new Device(sensorDTO.deviceId());
     }
 
     public void update(@Valid SensorUpdateDTO sensorUpdateDTO) {
         if (sensorUpdateDTO.name() != null) {
             this.name = sensorUpdateDTO.name();
         }
-        if (sensorUpdateDTO.unit() != null) {
-            this.unit = sensorUpdateDTO.unit();
+        if (sensorUpdateDTO.active() != null) {
+            this.active = sensorUpdateDTO.active();
         }
-        if (sensorUpdateDTO.idFarm() != null) {
-            this.farm = new Farm(sensorUpdateDTO.idFarm());
+        if (sensorUpdateDTO.deviceId() != null) {
+            this.device = new Device(sensorUpdateDTO.deviceId());
         }
     }
 }

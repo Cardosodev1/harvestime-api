@@ -8,8 +8,8 @@ public record SensorUpdateDTO(
         Long id,
 
         String name,
-        String unit,
-        Long idFarm
+        Boolean active,
+        Long deviceId
 
 ) {
 }
