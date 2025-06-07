@@ -9,11 +9,10 @@ public record AlertDetailsDTO(Long id,
                               String message,
                               LocalDateTime dateTime,
                               Severity severity,
-                              Long idSensor,
-                              Long idFarm) {
+                              Long sensorId) {
 
     public AlertDetailsDTO(Alert alert) {
-        this(alert.getId(), alert.getMessage(), alert.getDateTime(), alert.getSeverity(), alert.getSensor().getId(), alert.getFarm().getId());
+        this(alert.getId(), alert.getMessage(), alert.getDateTime(), alert.getSeverity(), alert.getSensor().getId());
     }
 
 }

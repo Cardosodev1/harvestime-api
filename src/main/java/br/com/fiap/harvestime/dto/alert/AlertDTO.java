@@ -19,10 +19,7 @@ public record AlertDTO(
         Severity severity,
 
         @NotNull
-        Long idSensor,
-
-        @NotNull
-        Long idFarm
+        Long sensorId
 
 ) {
 }

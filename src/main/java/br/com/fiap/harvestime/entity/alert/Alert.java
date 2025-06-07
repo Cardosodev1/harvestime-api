@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "alerts")
+@Table(name = "alert")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,7 +19,7 @@ public class Alert {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_alert")
+    @Column(name = "alert_id")
     private Long id;
 
     private String message;
@@ -33,18 +33,13 @@ public class Alert {
     private Boolean resolved;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_sensor")
+    @JoinColumn(name = "sensor_id")
     private Sensor sensor;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_farm")
-    private Farm farm;
 
     public Alert(AlertDTO alertDTO) {
         this.message = alertDTO.message();
         this.dateTime = alertDTO.dateTime();
         this.severity = alertDTO.severity();
-        this.sensor = new Sensor(alertDTO.idSensor());
-        this.farm = new Farm(alertDTO.idFarm());
+        this.sensor = new Sensor(alertDTO.sensorId());
     }
 }
