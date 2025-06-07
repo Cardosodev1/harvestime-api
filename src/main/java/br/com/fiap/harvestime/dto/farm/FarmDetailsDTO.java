@@ -8,7 +8,7 @@ public record FarmDetailsDTO(Long id,
                              String name,
                              Land land,
                              Address address,
-                             Long idUser) {
+                             Long userId) {
 
     public FarmDetailsDTO(Farm farm) {
         this(farm.getId(), farm.getName(), farm.getLand(), farm.getAddress(), farm.getUser().getId());

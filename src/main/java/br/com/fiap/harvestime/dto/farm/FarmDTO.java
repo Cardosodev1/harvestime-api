@@ -20,7 +20,7 @@ public record FarmDTO(
         AddressDTO address,
 
         @NotNull
-        Long idUser
+        Long userId
 
 ) {
 }

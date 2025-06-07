@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "farms")
+@Table(name = "farm")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,9 +19,10 @@ public class Farm {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_farm")
+    @Column(name = "farm_id")
     private Long id;
 
+    @Column(name = "farm_name")
     private String name;
 
     @Enumerated(EnumType.STRING)
@@ -31,18 +32,18 @@ public class Farm {
     private Address address;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_user")
+    @JoinColumn(name = "user_id")
     private User user;
 
-    public Farm(Long idFarm) {
-        this.id = idFarm;
+    public Farm(Long farmId) {
+        this.id = farmId;
     }
 
     public Farm(FarmDTO farmDTO) {
         this.name = farmDTO.name();
         this.land = farmDTO.land();
         this.address = new Address(farmDTO.address());
-        this.user = new User(farmDTO.idUser());
+        this.user = new User(farmDTO.userId());
     }
 
     public void update(@Valid FarmDetailsDTO farmDetailsDTO) {
@@ -52,8 +53,8 @@ public class Farm {
         if (farmDetailsDTO.land() != null) {
             this.land = farmDetailsDTO.land();
         }
-        if (farmDetailsDTO.idUser() != null) {
-            this.user = new User(farmDetailsDTO.idUser());
+        if (farmDetailsDTO.userId() != null) {
+            this.user = new User(farmDetailsDTO.userId());
         }
     }
 }
