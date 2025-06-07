@@ -5,13 +5,19 @@ import jakarta.validation.constraints.NotNull;
 public record ThresholdDTO(
 
         @NotNull
-        Double minValue,
+        Double minTemperature,
 
         @NotNull
-        Double maxValue,
+        Double maxTemperature,
 
         @NotNull
-        Long idSensor
+        Double minHumidity,
+
+        @NotNull
+        Double maxHumidity,
+
+        @NotNull
+        Long sensorId
 
 ) {
 }
