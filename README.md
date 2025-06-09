@@ -71,8 +71,11 @@ Aqui serão adicionadas imagens de testes da API e exemplos de resposta:
 
 ![image](https://github.com/user-attachments/assets/0a593371-b900-4cee-bcb1-991287636310)
 
+![image](https://github.com/user-attachments/assets/0a804af6-58a1-45e4-ae68-19d69a04c65d)
 
+![image](https://github.com/user-attachments/assets/da3fa7f2-4f53-43b8-bb5c-3f4a0f9480fd)
 
+![image](https://github.com/user-attachments/assets/a4156304-5fa8-468c-ac4c-3afa47f25748)
 
 ---
 
